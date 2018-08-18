@@ -1,0 +1,42 @@
+parameters:
+  # Adds a fallback DATABASE_URL
+  env(DATABASE_URL): ''
+
+doctrine:
+  dbal:
+    #configure these for your database server
+    driver: 'pdo_mysql'
+    server_version: '5.7'
+    charset: utf8mb4
+
+    url: '%env(resolve:DATABASE_URL)%'
+
+  orm:
+    auto_generate_proxy_classes: '%kernel.debug%'
+    naming_strategy: doctrine.orm.naming_strategy.underscore
+    auto_mapping: true
+    mappings:
+      Suite_Domain:
+        is_bundle: false
+        type: yml
+        dir: '%kernel.project_dir%/src/Infrastructure/Doctrine/Mapping/Domain'
+        prefix: 'App\API\Domain'
+      Suite_Application:
+        is_bundle: false
+        type: yml
+        dir: '%kernel.project_dir%/src/Infrastructure/Doctrine/Mapping/Application'
+        prefix: 'App\API\Application'
+      Suite_Infrastructure:
+        is_bundle: false
+        type: yml
+        dir: '%kernel.project_dir%/src/Infrastructure/Doctrine/Mapping/Infrastructure'
+        prefix: 'App\API\Infrastructure'
+
+
+
+    proxy_namespace: Proxies
+    proxy_dir: '%kernel.cache_dir%/doctrine/orm/Proxies'
+    default_entity_manager: default
+    metadata_cache_driver: array
+    query_cache_driver: array
+    result_cache_driver: array
