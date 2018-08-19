@@ -1,0 +1,4 @@
+services:
+  App\Infrastructure\Common\Service\SymfonyEventDispatcher:
+    arguments:
+      - '@event_dispatcher'

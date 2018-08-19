@@ -1,0 +1,8 @@
+services:
+  StraTDeS\SharedKernel\Infrastructure\DoctrinePersistentRepository:
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+      - '@StraTDeS\SharedKernel\Infrastructure\Criteria\CriteriaToDoctrineTransformer'
+
+  App\Infrastructure\User\Repository\DoctrineUserReadModelRepository:
+    parent: StraTDeS\SharedKernel\Infrastructure\DoctrinePersistentRepository

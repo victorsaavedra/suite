@@ -1,0 +1,25 @@
+StraTDeS\SharedKernel\Application\CQRS\ReadModel:
+  type: entity
+  table: readmodels
+  inheritanceType: JOINED
+  discriminatorColumn:
+    name: type
+    type: string
+    length: 255
+  discriminatorMap:
+    USER_READ_MODEL: App\Application\User\ReadModel\UserReadModel
+  id:
+    id:
+      type: string
+      length: 36
+      options:
+        fixed: true
+      generator:
+        strategy: NONE
+  fields:
+    createdAt:
+      column: created_at
+      type: datetime
+    updatedAt:
+      column: updated_at
+      type: datetime

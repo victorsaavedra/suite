@@ -1,0 +1,18 @@
+App\Application\User\ReadModel\UserReadModel:
+  type: entity
+  table: readmodel_users
+  fields:
+    userId:
+      column: user_id
+      type: string
+      length: 36
+      options:
+        fixed: true
+    name:
+      column: name
+      type: string
+      length: 255
+    phoneNumber:
+      column: phone_number
+      type: string
+      length: 25

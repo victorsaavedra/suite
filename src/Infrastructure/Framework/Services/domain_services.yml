@@ -1,0 +1,7 @@
+services:
+  App\Domain\Common\Service\EventManagerService:
+    arguments:
+      - '@App\Infrastructure\Common\Repository\DoctrineEventStore'
+      - '@App\Infrastructure\Common\Service\SymfonyEventDispatcher'
+
+  StraTDeS\SharedKernel\Infrastructure\Criteria\CriteriaToDoctrineTransformer:

@@ -1,0 +1,13 @@
+services:
+
+  App\Infrastructure\Common\Repository\DoctrineEventStore:
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+
+  App\Infrastructure\Common\Repository\DoctrineEventSourcedRepository:
+    arguments:
+      - '@App\Domain\Common\Service\EventManagerService'
+      - '@App\Infrastructure\Common\Repository\DoctrineEventStore'
+
+  App\Infrastructure\User\Repository\DoctrineEventSourcedUserRepository:
+    parent: App\Infrastructure\Common\Repository\DoctrineEventSourcedRepository

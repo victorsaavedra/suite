@@ -6,11 +6,13 @@ doctrine:
   dbal:
     #configure these for your database server
     driver: 'pdo_mysql'
-    server_version: '5.7'
+    server_version: '5.6'
     charset: utf8mb4
+    schema_filter: '/^(?!\b(event_store)\b).*$/'
 
     url: '%env(resolve:DATABASE_URL)%'
-
+    types:
+      StraTDeS\SharedKernel\Infrastructure\Doctrine\CustomType\DoctrineUUIDV4: StraTDeS\SharedKernel\Infrastructure\Doctrine\CustomType\DoctrineUUIDV4
   orm:
     auto_generate_proxy_classes: '%kernel.debug%'
     naming_strategy: doctrine.orm.naming_strategy.underscore
@@ -20,23 +22,19 @@ doctrine:
         is_bundle: false
         type: yml
         dir: '%kernel.project_dir%/src/Infrastructure/Doctrine/Mapping/Domain'
-        prefix: 'App\API\Domain'
+        prefix: 'App\Domain'
       Suite_Application:
         is_bundle: false
         type: yml
         dir: '%kernel.project_dir%/src/Infrastructure/Doctrine/Mapping/Application'
-        prefix: 'App\API\Application'
+        prefix: 'App\Application'
       Suite_Infrastructure:
         is_bundle: false
         type: yml
         dir: '%kernel.project_dir%/src/Infrastructure/Doctrine/Mapping/Infrastructure'
-        prefix: 'App\API\Infrastructure'
-
-
-
-    proxy_namespace: Proxies
-    proxy_dir: '%kernel.cache_dir%/doctrine/orm/Proxies'
-    default_entity_manager: default
-    metadata_cache_driver: array
-    query_cache_driver: array
-    result_cache_driver: array
+        prefix: 'App\Infrastructure'
+      Suite_Shared_Kernel_Application:
+        is_bundle: false
+        type: yml
+        dir: '%kernel.project_dir%/src/Infrastructure/Doctrine/Mapping/SharedKernel/Application'
+        prefix: 'StraTDeS\SharedKernel\Application'

@@ -15,3 +15,7 @@ services:
                              # The best practice is to be explicit about your dependencies anyway.
 
 imports:
+  - { resource: '../src/Infrastructure/Framework/Services/infrastructure_services.yml' }
+  - { resource: '../src/Infrastructure/Framework/Services/domain_services.yml' }
+  - { resource: '../src/Infrastructure/Framework/Services/repositories.yml' }
+  - { resource: '../src/Infrastructure/Framework/Services/readmodel_repositories.yml' }
