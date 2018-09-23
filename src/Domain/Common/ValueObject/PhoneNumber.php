@@ -5,7 +5,7 @@ use StraTDeS\SharedKernel\Domain\GenericDomainException;
 class PhoneNumber
 {
     private const COUNTRY_CODES = [
-        '0034'
+        34
     ];
 
     /** @var int */
@@ -36,7 +36,7 @@ class PhoneNumber
      */
     public static function create(int $countryCode, int $phoneNumber): PhoneNumber
     {
-        return new self($phoneNumber, $countryCode);
+        return new self($countryCode, $phoneNumber);
     }
 
     /**
@@ -57,7 +57,7 @@ class PhoneNumber
 
     public function toString(): string
     {
-        return $this->getCountryCode(). ' '.$this->getPhoneNumber();
+        return str_pad($this->getCountryCode(), 4, '0', STR_PAD_LEFT). ' '.$this->getPhoneNumber();
     }
 
     /**

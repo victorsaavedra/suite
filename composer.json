@@ -8,6 +8,7 @@
         "doctrine/orm": "^2.6",
         "league/tactician": "^1.0",
         "league/tactician-bundle": "^1.1",
+        "phpunit/phpunit": "^7.3",
         "ramsey/uuid": "^3.8",
         "ramsey/uuid-doctrine": "^1.5",
         "symfony/console": "^4.1",
