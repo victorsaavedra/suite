@@ -2,3 +2,7 @@ services:
   App\Infrastructure\Common\Service\SymfonyEventDispatcher:
     arguments:
       - '@event_dispatcher'
+
+  App\Infrastructure\Common\Service\TacticianCommandBus:
+    arguments:
+      - '@tactician.commandbus.default'
